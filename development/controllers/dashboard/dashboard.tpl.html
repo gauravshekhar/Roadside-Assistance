@@ -1,0 +1,61 @@
+<div id="dashboard-page" class="page">
+
+	<div class="alert alert-info alert-page">
+		<span class="strong">Dashboard: </span>
+		<span>View additional information, and navigate between your default partners.</span>
+	</div>
+
+	<div class="user-partner-row row">
+		<div class="col-xs-6 col-md-2" ng-repeat="partner in userPartners">
+			<a ng-click="partnerClicked(partner, $event)" href="javascript:void(0)" class="thumbnail">
+				<img ng-src="/images/partners/{{partner.id}}.jpg" alt="...">
+				<div class="ellipsis">{{partner.partnerName}}</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="more-content" ng-if="selectedPartner !== null">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{selectedPartner.partnerName}} · Description</h3>
+			</div>
+
+			<div class="panel-body">
+				<span ng-if="selectedPartner.description !== undefined">{{selectedPartner.description}}</span>
+				<span ng-if="selectedPartner.description === undefined">
+					<div class="alert alert-danger"><strong>Uh Oh: </strong> It looks like this partner does not have a description.</div>
+				</span>
+			</div>
+		</div>
+
+		<div class="panel panel-default" ng-if="selectedPartner.bookmarks.length > 0">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{selectedPartner.partnerName}} · Bookmarks</h3>
+			</div>
+
+			<table class="table table-hover">
+				<tbody>
+					<tr class="hover" ng-repeat="bookmark in selectedPartner.bookmarks">
+						<td>{{bookmark.name}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="panel panel-default" ng-if="selectedPartner.announcements.length > 0">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{selectedPartner.partnerName}} · Announcements</h3>
+			</div>
+
+			<table class="table table-hover">
+				<tbody>
+					<tr class="hover" ng-repeat="announcement in selectedPartner.announcements">
+						<td>{{announcement.title}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</div>

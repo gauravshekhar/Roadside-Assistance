@@ -1,0 +1,15 @@
+<div id="search-page" class="page">
+	<div class="alert alert-info alert-page">
+		<span class="strong">Search </span>
+		<span class="hide">{{query}}</span>
+		<span class="hide" ng-if="partnerName">{{' · '+partnerName}}</span>
+	</div>
+
+	<div class="list-group" ng-repeat="result in results">
+		<a target="_blank" ng-href="{{result.reference}}" class="list-group-item">
+			<h4 class="list-group-item-heading">{{result.title}}</h4>
+			<p class="list-group-item-text">{{result.summary}}</p>
+		</a>
+	</div>
+
+</div>

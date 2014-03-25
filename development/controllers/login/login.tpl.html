@@ -1,0 +1,103 @@
+
+<div class="modal fade" id="modal-need-help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Need Help Logging In?</h4>
+			</div>
+	
+			<div class="modal-body">
+				<span>The Online Reference System for Roadside Services uses your SSO/MMA login credentials. If you have forgotten these credentials please</span>
+				<a href="javascript:void(0)">click here</a>
+				<span>.</span>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="login-page" class="page">
+	<div class="pull-left left-container">
+		<div class="login-wrapper">
+			<div class="wrapper">
+				<form ng-submit="validateLogin()">
+					<div ng-if="error.found" ng-bind="error.message" class="alert alert-danger"></div>
+					
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<label for="username">Username:</label>
+								</td>
+								<td>
+									<div>
+										<input ng-model="username" id="username" type="text" name="username" class="form-control" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="password">Password:</label>
+								</td>
+								<td>
+									<div>
+										<input ng-model="password" id="password" type="password" name="password" class="form-control" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="javascript:void(0)" ng-click="help()"> Need Help?</a>
+								</td>
+								<td>
+									<button id="login-button" class="btn btn-primary" type="submit">Login</button>
+									<div class="clearfix"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="pull-right right-container">
+		<img src="images/home.png" />
+
+		<div class="panels">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Our Company</h3>
+				</div>
+				<div class="panel-body">Allstate Roadside Services emerged from the acquisition by Allstate Corporation of the Partnership Marketing Group (PMG) in 2008, integrating them with Allstate Motor Club, one of the nation’s top motor clubs with 50 years of roadside expertise. </div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Our People</h3>
+				</div>
+				<div class="panel-body">The Allstate Roadside Services commitment is supported by more than 2000 professionals. We attract the best and brightest in the roadside arena through our industry-focused training methodologies, opportunities for advancement, and personal recognition programs. </div>
+			</div>
+
+			<div class="panel panel-default last-panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Our Partners</h3>
+				</div>
+				<div class="panel-body">Our partnership focus helps us create customized solutions for numerous corporate clients with tens of millions of customers. We offer our partners innovative ways to build brand equity and increase customer loyalty through our differentiated service levels and exclusive program options. We proudly serve leading companies across a broad spectrum of industries, including vehicle manufacturers (OEMs), fleet and vehicle rental corporations, mobile/GPS providers, insurance companies, association and affinity groups, auto clubs, and credit card providers. </div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="clearfix">
+
+	</div>
+</div>
+
+<div class="clear"></div>
+

@@ -1,0 +1,161 @@
+<div id="side-search", class="well">
+	<div class="alert alert-danger" ng-if="searchError === true">Atleast one field is required.</div>
+	<form autocomplete="off">
+		<table>
+			<tbody>
+				<tr>
+					<td class="first-child">
+						<label for="search-partners">Partner:</label>
+					</td>
+					<td>
+						<select id="search-partners" name="partner">
+							<option index="0" value="">Choose a Partner</option>
+							<option value="{{partner.partnerName | orderBy:'index'}}" ng-repeat="partner in allPartners | orderBy:'partnerName'">{{partner.partnerName}}</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="search-topic">Topic:</label>
+					</td>
+					<td>
+						<select id="search-topic" name="partner">
+							<option index="0" value="">Choose a Topic</option>
+							<option value="Program Overview">Program Overview</option>
+							<option value="Benefits and Services">Benefits and Services</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="search-input"> Search:</label>
+					</td>
+					<td>
+						<div class="form-group has-feedback">
+							<input autocomplete="off"  id="search-input" class="form-control" type="text" name="query" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button class="btn btn-primary" type="submit" ng-click="search()">Search</button>
+						<div class="clear"></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+<div id="side-announcement" class="well">
+	<h4>Global Announcements</h4>
+	<ol>
+		<li>
+			<a class="text" href="javascript:void(0)">Welcome to the new reference system.</a>
+		</li>
+		<li>
+			<a class="text" href="javascript:void(0)">This will be the greatest site ever guaranteed.</a>
+		</li>
+		<li>
+			<a class="text" href="javascript:void(0)">Tutorial video for new navigation.</a>
+		</li>
+	</ol>
+	<a href="javascript:void(0)" class="more"> - More Announcements</a>
+	<div class="clear"></div>
+</div>
+
+
+<div id="side-partners" class="well" ng-if="userPartners.length > 0">
+	<h4>
+		<span>Default Partners · </span>
+		<a ng-click="showModal()" class="weak" href="javascript:void(0)"> Edit</a>
+	</h4>
+
+	<ul>
+		<li class="partner" ng-repeat="partner in userPartners">
+			<div ng-click="partnerTriangleClicked(userPartners, partner, $event)" class="triangle-wrapper">
+				<div class="level1 closed"></div>
+			</div>
+			<a ng-if="partner.pageId !== null" ng-href="{{'#/page/' + partner.pageId + '/'}}" class="text">{{partner.partnerName}}</a>
+			<a ng-if="partner.pageId === null" href="javascript:void(0)" class="text">{{partner.partnerName}}</a>
+			<div class="clear"></div>
+
+
+			<div class="primaryNavigations">
+				<ol class="primaryOl">
+					<li class="primaryNav" ng-repeat="primaryNavigation in partner.primaryNavigations">
+						<a href="javascript:void(0)" class="text">{{primaryNavigation.primaryNavName}}</a>
+					</li>
+				</ol>
+			</div>
+
+		</li>
+	</ul>
+</div>
+
+<div id="partners-modal">
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"data-controls-modal="modal-loading" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" aria-hidden="true" ng-click="submit()">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Select one to five default partners.</h4>
+				</div>
+		
+				<div class="modal-body">
+
+
+
+					<div id="modal-all-partners" class="radio-wrapper">
+						<div class="alert" ng-class="(userPartners.length === 0 || userPartners.length > 5) ? 'alert-danger' : 'alert-info'">Please select one to five default partners.</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Select & Deselect Partners</h3>
+							</div>
+
+							<div class="panel-body">
+								<div ng-repeat="partner in allPartners | orderBy:'partnerName'" class="each ellipsis">
+									<input id="{{partner.id}}" type="checkbox" ng-click="partnerClicked(partner, $event)" />
+									<label for="{{partner.id}}">{{partner.partnerName}}</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="order-wrapper" ng-class="(userPartners.length > 0) ? '' : 'hide'">
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Drag & Drop Partners For Prioritization</h3>
+							</div>
+
+							<table id="sort" class="table table-hover">
+								<tbody>
+									<tr data-id="{{partner.id}}" ng-repeat="partner in userPartners">
+										<td>{{partner.partnerName}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+					
+				</div>
+
+				<div class="modal-footer">
+					<button ng-class="(userPartners.length > 0 && userPartners.length < 6) ? 'btn-primary' : 'disabled'" type="button" class="btn" ng-click="submit()">Add Partners</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

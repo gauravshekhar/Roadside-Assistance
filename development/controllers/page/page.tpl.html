@@ -1,0 +1,31 @@
+<div id="page-page" class="page">
+	<div ng-if="type === 'welcome'">
+		<div class="alert alert-info alert-page">
+			<span class="strong">{{partnerName}} Dashboard</span>
+			<span> </span>
+		</div>
+
+		<div class="well">
+			<img ng-src="images/partners-welcome/{{partnerId}}.jpg" width="605"/>
+		</div>
+
+		<div class="well">
+			<p>{{partnerDescription}}</p>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">More Details</h3>
+			</div>
+
+			<table class="table table-hover">
+				<tbody>
+					<tr ng-repeat="page in primaryPageList" class="hover">
+						<td>{{page.primaryNavName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
